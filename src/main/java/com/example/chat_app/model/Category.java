@@ -1,5 +1,6 @@
 package com.example.chat_app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class Category {
     @Column (nullable = false)
     private String title;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "category")
     private List<Interview> interviews;
 

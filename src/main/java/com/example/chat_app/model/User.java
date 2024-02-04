@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(
@@ -59,6 +60,14 @@ public class User {
     @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Question> questions = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    private Set<Interview> createdInterviews = Set.of();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "peer")
+    private Set<Interview> invitedInterviews = Set.of();
 
     public void setAccessToken(String accessToken) {
         this.accessToken = accessToken;

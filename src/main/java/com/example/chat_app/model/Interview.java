@@ -29,6 +29,10 @@ public class Interview {
     @Column (nullable = true)
     private String peer_feedback;
 
+    // add date field
+    @Column (nullable = false)
+    private String date;
+
     @ManyToMany
     @JoinTable(
             name = "interview_question",
@@ -49,6 +53,14 @@ public class Interview {
 
     public User getPeer() {
         return peer;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public void setPeer(User peer) {
